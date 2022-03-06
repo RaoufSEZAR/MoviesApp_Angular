@@ -4,7 +4,7 @@
       <div class="slide-bg">
         <img
           class="slide-bg-image"
-          src="https://image.tmdb.org/t/p/original/{{ item.poster_path }}"
+          [src]="imagesSizes.large + item.poster_path"
           alt=""
         />
       </div>
