@@ -16,6 +16,7 @@ import { TvshowsComponent } from './pages/tvshows/tvshows.component';
 import { PaginatorModule } from 'primeng/paginator';
 import { TvshowItemComponent } from './components/tvshow-item/tvshow-item.component';
 
+//@ts-ignore
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,6 +35,7 @@ import { TvshowItemComponent } from './components/tvshow-item/tvshow-item.compon
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
+    PaginatorModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

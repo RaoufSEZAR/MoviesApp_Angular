@@ -4,4 +4,11 @@
       <movie-item [itemData]="movie"></movie-item>
     </div>
   </div>
+  <div class="">
+    <p-paginator
+      [rows]="20"
+      [totalRecords]="1000"
+      (onPageChange)="paginate($event)"
+    ></p-paginator>
+  </div>
 </div>
