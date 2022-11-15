@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { MovieDto } from '../models/movie';
 import { of, switchMap } from 'rxjs';
 import { TvDto } from '../models/tv';
+// @ts-ignore
 
 @Injectable({
   providedIn: 'root',
@@ -18,6 +19,18 @@ export class MoviesService {
       .pipe(
         switchMap((res) => {
           return of(res.results.slice(0, movieCount));
+        })
+      );
+  }
+
+  searchMovies(page: number) {
+    return this.http
+      .get<MovieDto>(
+        `${this.baseUrl}/movie/popular?page=${page}&api_key=${this.apiKey}`
+      )
+      .pipe(
+        switchMap((res) => {
+          return of(res.results);
         })
       );
   }

@@ -1,3 +1,5 @@
+// @ts-ignore
+
 import { Component, Input, OnInit } from '@angular/core';
 import {
   trigger,
@@ -9,6 +11,7 @@ import {
 import { Movie } from './../../models/movie';
 import { IMAGES_SIZES } from './../../constants/images-sizes';
 
+// @ts-ignore
 @Component({
   selector: 'app-slider',
   templateUrl: './slider.component.html',
