@@ -17,6 +17,7 @@ import { PaginatorModule } from 'primeng/paginator';
 import { TvshowItemComponent } from './components/tvshow-item/tvshow-item.component';
 import { MovieComponent } from './pages/movie/movie.component';
 import { TabViewModule } from 'primeng/tabview';
+import { VideoEmbedComponent } from './components/video-embed/video-embed.component';
 
 //@ts-ignore
 @NgModule({
@@ -32,6 +33,7 @@ import { TabViewModule } from 'primeng/tabview';
     TvshowsComponent,
     TvshowItemComponent,
     MovieComponent,
+    VideoEmbedComponent,
   ],
   imports: [
     BrowserModule,
