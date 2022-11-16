@@ -15,6 +15,8 @@ import { MovieItemComponent } from './components/movie-item/movie-item.component
 import { TvshowsComponent } from './pages/tvshows/tvshows.component';
 import { PaginatorModule } from 'primeng/paginator';
 import { TvshowItemComponent } from './components/tvshow-item/tvshow-item.component';
+import { MovieComponent } from './pages/movie/movie.component';
+import { TabViewModule } from 'primeng/tabview';
 
 //@ts-ignore
 @NgModule({
@@ -29,6 +31,7 @@ import { TvshowItemComponent } from './components/tvshow-item/tvshow-item.compon
     MovieItemComponent,
     TvshowsComponent,
     TvshowItemComponent,
+    MovieComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,6 +39,7 @@ import { TvshowItemComponent } from './components/tvshow-item/tvshow-item.compon
     AppRoutingModule,
     HttpClientModule,
     PaginatorModule,
+    TabViewModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

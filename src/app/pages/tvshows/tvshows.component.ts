@@ -11,11 +11,18 @@ import { Tv } from './../../models/tv';
 })
 export class TvshowsComponent implements OnInit {
   movies: Tv[] = [];
+  page: number = 1;
   constructor(private moviesService: MoviesService) {}
 
   ngOnInit(): void {
-    this.moviesService.getTvs('top_rated', 20).subscribe((movies) => {
+    this.getPagedMovies(this.page);
+  }
+  getPagedMovies(page: number) {
+    this.moviesService.getTvs('top_rated', page).subscribe((movies) => {
       this.movies = movies;
     });
+  }
+  paginate(event: any) {
+    this.getPagedMovies(event.page + 1);
   }
 }

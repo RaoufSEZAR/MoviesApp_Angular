@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit {
     this.moviesService.getMovies('upcoming').subscribe((res) => {
       this.upcomingMovies = res;
     });
-    this.moviesService.getTvs('popular').subscribe((tvShows) => {
+    this.moviesService.getTvs('popular', 1).subscribe((tvShows) => {
       this.popularTvShows = tvShows;
     });
   }

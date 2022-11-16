@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { MovieDto } from '../models/movie';
 import { of, switchMap } from 'rxjs';
 import { TvDto } from '../models/tv';
+import { Movie } from './../models/movie';
 // @ts-ignore
 
 @Injectable({
@@ -35,13 +36,21 @@ export class MoviesService {
       );
   }
 
-  getTvs(type: string = 'latest', count: number = 12) {
+  getTvs(type: string = 'latest', page: number) {
     return this.http
-      .get<TvDto>(`${this.baseUrl}/tv/${type}?api_key=${this.apiKey}`)
+      .get<TvDto>(
+        `${this.baseUrl}/tv/${type}?page=${page}&api_key=${this.apiKey}`
+      )
       .pipe(
         switchMap((res) => {
-          return of(res.results.slice(0, count));
+          return of(res.results);
         })
       );
+  }
+
+  getMovieById(id: string) {
+    return this.http.get<Movie>(
+      `${this.baseUrl}/movie/${id}?api_key=${this.apiKey}`
+    );
   }
 }
