@@ -18,6 +18,7 @@ import { TvshowItemComponent } from './components/tvshow-item/tvshow-item.compon
 import { MovieComponent } from './pages/movie/movie.component';
 import { TabViewModule } from 'primeng/tabview';
 import { VideoEmbedComponent } from './components/video-embed/video-embed.component';
+import { ImageModule } from 'primeng/image';
 
 //@ts-ignore
 @NgModule({
@@ -42,6 +43,7 @@ import { VideoEmbedComponent } from './components/video-embed/video-embed.compon
     HttpClientModule,
     PaginatorModule,
     TabViewModule,
+    ImageModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
