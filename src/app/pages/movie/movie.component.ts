@@ -1,8 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MoviesService } from './../../services/movies.service';
-import { Movie, MovieImages, MovieVideo } from './../../models/movie';
+import {
+  Movie,
+  MovieImages,
+  MovieVideo,
+  MovieCredits,
+} from './../../models/movie';
 import { IMAGES_SIZES } from './../../constants/images-sizes';
+import { first } from 'rxjs';
 
 @Component({
   selector: 'app-movie',
@@ -13,16 +19,18 @@ export class MovieComponent implements OnInit {
   movie: Movie | null = null;
   movieVideos: any;
   movieImages: MovieImages | null = null;
+  movieCredits: MovieCredits | null = null;
   imagesSizes = IMAGES_SIZES;
   constructor(
     private router: ActivatedRoute,
     private moviesService: MoviesService
   ) {}
   ngOnInit(): void {
-    this.router.params.subscribe(({ movieId }) => {
+    this.router.params.pipe(first()).subscribe(({ movieId }) => {
       this.getMovieInfo(movieId);
       this.getMovieVideos(movieId);
       this.getMovieImages(movieId);
+      this.getMovieCredits(movieId);
     });
   }
   getMovieInfo(id: string) {
@@ -39,6 +47,11 @@ export class MovieComponent implements OnInit {
   getMovieImages(id: string) {
     this.moviesService.getMovieImages(id).subscribe((movieImages) => {
       this.movieImages = movieImages;
+    });
+  }
+  getMovieCredits(id: string) {
+    this.moviesService.getMovieCredits(id).subscribe((movieCredits) => {
+      this.movieCredits = movieCredits;
     });
   }
 }
