@@ -50,10 +50,11 @@ export class MoviesService {
         })
       );
   }
-  searchMovies(page: number) {
+  searchMovies(page: number, searchValue?: string) {
+    let url = searchValue ? '/search/movie' : '/movie/popular';
     return this.http
       .get<MovieDto>(
-        `${this.baseUrl}/movie/popular?page=${page}&api_key=${this.apiKey}`
+        `${this.baseUrl}${url}?page=${page}&query=${searchValue}&api_key=${this.apiKey}`
       )
       .pipe(
         switchMap((res) => {
