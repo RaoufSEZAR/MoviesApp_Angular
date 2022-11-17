@@ -20,6 +20,7 @@ import { TabViewModule } from 'primeng/tabview';
 import { VideoEmbedComponent } from './components/video-embed/video-embed.component';
 import { ImageModule } from 'primeng/image';
 import { CarouselModule } from 'primeng/carousel';
+import { GenresComponent } from './pages/genres/genres.component';
 
 //@ts-ignore
 @NgModule({
@@ -36,6 +37,7 @@ import { CarouselModule } from 'primeng/carousel';
     TvshowItemComponent,
     MovieComponent,
     VideoEmbedComponent,
+    GenresComponent,
   ],
   imports: [
     BrowserModule,

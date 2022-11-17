@@ -9,6 +9,7 @@ import {
 } from '../models/movie';
 import { of, switchMap } from 'rxjs';
 import { TvDto } from '../models/tv';
+import { GenresDto } from '../models/genre';
 // @ts-ignore
 
 @Injectable({
@@ -29,6 +30,26 @@ export class MoviesService {
       );
   }
 
+  getMoviesGenres() {
+    return this.http
+      .get<GenresDto>(`${this.baseUrl}/genre/movie/list?api_key=${this.apiKey}`)
+      .pipe(
+        switchMap((res) => {
+          return of(res.genres);
+        })
+      );
+  }
+  getMoviesByGeners(page: number, genreId: string) {
+    return this.http
+      .get<MovieDto>(
+        `${this.baseUrl}/discover/movie?with_genres=${genreId}&page=${page}&api_key=${this.apiKey}`
+      )
+      .pipe(
+        switchMap((res) => {
+          return of(res.results);
+        })
+      );
+  }
   searchMovies(page: number) {
     return this.http
       .get<MovieDto>(
@@ -73,5 +94,16 @@ export class MoviesService {
     return this.http.get<MovieCredits>(
       `${this.baseUrl}/movie/${id}/credits?api_key=${this.apiKey}`
     );
+  }
+  getsimmovies(id: string, count: number = 4) {
+    return this.http
+      .get<MovieDto>(
+        `${this.baseUrl}/movie/${id}/similar?api_key=${this.apiKey}`
+      )
+      .pipe(
+        switchMap((res) => {
+          return of(res.results.slice(0, count));
+        })
+      );
   }
 }

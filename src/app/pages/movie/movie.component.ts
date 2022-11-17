@@ -20,17 +20,19 @@ export class MovieComponent implements OnInit {
   movieVideos: any;
   movieImages: MovieImages | null = null;
   movieCredits: MovieCredits | null = null;
+  simmovies: any;
   imagesSizes = IMAGES_SIZES;
   constructor(
     private router: ActivatedRoute,
     private moviesService: MoviesService
   ) {}
   ngOnInit(): void {
-    this.router.params.pipe(first()).subscribe(({ movieId }) => {
+    this.router.params.subscribe(({ movieId }) => {
       this.getMovieInfo(movieId);
       this.getMovieVideos(movieId);
       this.getMovieImages(movieId);
       this.getMovieCredits(movieId);
+      this.getsimmovies(movieId);
     });
   }
   getMovieInfo(id: string) {
@@ -52,6 +54,11 @@ export class MovieComponent implements OnInit {
   getMovieCredits(id: string) {
     this.moviesService.getMovieCredits(id).subscribe((movieCredits) => {
       this.movieCredits = movieCredits;
+    });
+  }
+  getsimmovies(id: string) {
+    this.moviesService.getsimmovies(id, 6).subscribe((listsimmovies) => {
+      this.simmovies = listsimmovies;
     });
   }
 }
