@@ -17,7 +17,7 @@ import { GenresDto } from '../models/genre';
 })
 export class MoviesService {
   baseUrl: string = 'https://api.themoviedb.org/3';
-  apiKey: string = 'fc506153a253a96abde72b4cc99b58a9';
+  apiKey: string = "YOUR_API_KEY";
   constructor(private http: HttpClient) {}
 
   getMovies(type: string = 'upcoming', movieCount: number = 12) {
